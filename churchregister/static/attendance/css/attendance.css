@@ -1,0 +1,15 @@
+body {
+  font-family: "Cinzel", serif;
+}
+
+.logo {
+  margin-left: 30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+h1 {
+  display: inline-block;
+}

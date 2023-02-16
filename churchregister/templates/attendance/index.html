@@ -1,0 +1,85 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <img class="logo m-3" src="{% static 'attendance/images/red.png' %}" alt="Loading Image">
+        <h1>HOPE CENTRE AREA</h1> 
+    </div>
+    <div class="jumbotron mt-3">
+        <h3 class="d-flex justify-content-center">DATA CAPTURING FORM</h3>
+        <hr>
+        <form method="POST" action="{% url 'sumbitRecord' %}">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control mb-3" placeholder="First name" name="firstName"
+                        required="required">
+                 </div>
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control mb-3" placeholder="Last Name" name="lastName"
+                        required="required">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control mb-3" placeholder="Address" name="address"
+                        required="required">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <select class="form-control mb-3" placeholder="Sex" name="sex" required="required">
+                        <option value="Sex" disabled-selected-hidden>Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <input type="email" class="form-control" placeholder="Email Address" name="email">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" placeholder="Phone Number" name="phonenumber" required="required">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <select class="form-control" name="department">
+                    <option value="">Select Department...</option>
+                    
+                    <option value="Choir">Choir</option>
+                    <option value="Media">Media</option>
+                    <option value="Ushering">Ushering</option>
+                    <option value="Sanitation">Sanitation</option>
+                    <option value="Evangelism">Evangelism</option>
+                    <option value="Children">Children</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <input type="date" class="form-control" placeholder="Birthday" name="birthday">
+                </div>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary" style="float: right;" id="submit-button">
+        </form>
+    </div>
+</div>
+
+<footer id= "main-footer" class="bg-secondary text-align-left text-white mt-5 p-5">
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <p class="lead">
+                    Copyright &copy; <span id="year"></span>
+                </p>
+                <p class="lead"><i class="fas fa-home"></i> HOPE CENTRE AREA HQ. ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Get the current year for the copyright
+    $("#year").text(new Date().getFullYear());
+    CKEDITOR.replace( 'editor1' );
+</script>
+{% endblock %}
